@@ -1,0 +1,9 @@
+{
+  "name": "blastwave-landing",
+  "version": "1.0.0",
+  "description": "Blastwave Landing Page",
+  "scripts": {
+    "serve": "npx serve . -p 3000",
+    "dev": "npx live-server --port=3000"
+  }
+}
