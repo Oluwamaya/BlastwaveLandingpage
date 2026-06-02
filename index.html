@@ -15,7 +15,7 @@
   <meta name="theme-color" content="#00FFB2" />
 
   <!-- Canonical URL — prevents duplicate-content issues -->
-  <link rel="canonical" href="https://app.blastwave.africa/" />
+  <link rel="canonical" href="https://blastwave.africa/" />
 
   <!-- ══════════════════════════════════════════════
        GOOGLE SEARCH CONSOLE VERIFICATION
@@ -1026,13 +1026,14 @@
       <a href="https://app.blastwave.africa/">Register</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 Blastwave. All rights reserved.</span>
-    <span class="made-in">Made with ❤️ in 🇳🇬 Nigeria</span>
-  </div>
+ <div class="footer-bottom">
+  <span>© <span id="copy-year"></span> Blastwave. All rights reserved. Blastwave is a product of <strong>Mayacode Technologies</strong>.</span>
+</div>
 </footer>
 
 <script>
+  document.getElementById('copy-year').textContent = new Date().getFullYear();
+  
 const APP_URL = 'https://your-angular-app.netlify.app';
 const API_URL = 'https://blastwave-backend.onrender.com/api';
 
