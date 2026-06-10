@@ -1092,6 +1092,17 @@ async function loadPricing() {
     const plans = await res.json();
     if (!plans.length) throw new Error('No plans');
 
+    let rate = null;
+    try {
+      const rateRes = await fetch(`${API_URL}/plans/rate`);
+      if (rateRes.ok) {
+        const rateData = await rateRes.json();
+        rate = rateData.rate;
+      }
+    } catch (e) {
+      console.error('Error fetching rate:', e);
+    }
+
     container.innerHTML = `<div class="pricing-grid">${plans.map(plan => {
       const featured = plan.name === 'Growth';
       const color = PLAN_BTN_COLOR[plan.name] || plan.badgeColor || '#00FFB2';
@@ -1103,10 +1114,18 @@ async function loadPricing() {
             <div class="price-name">${icon} ${plan.name}</div>
             <div class="price-desc">${plan.description}</div>
           </div>
-          <div class="price-amount">
-            <span class="price-sym">$</span>
-            <span class="price-val">${plan.price}</span>
-            <span class="price-per">${plan.price > 0 ? '/60 days' : 'free trial'}</span>
+          <div class="price-amount" style="flex-wrap: wrap; align-items: center;">
+            <div>
+              <span class="price-sym">$</span>
+              <span class="price-val">${plan.price}</span>
+              <span class="price-per">${plan.price > 0 ? '/60 days' : 'free trial'}</span>
+            </div>
+            ${plan.price > 0 && rate ? `
+              <div style="width: 100%; font-size: 0.85rem; color: var(--green); margin-top: 0.5rem; font-weight: 600; text-align: left;">
+                ≈ ₦${Math.round(plan.price * rate).toLocaleString('en-NG')}
+                <span style="font-size: 0.72rem; color: var(--muted); font-weight: normal;">(at ₦${Math.round(rate).toLocaleString('en-NG')}/$)</span>
+              </div>
+            ` : ''}
           </div>
           <div class="price-limits">
             <div class="limit-line"><span>📧 Daily Email</span><strong>${plan.dailyEmailLimit.toLocaleString()}</strong></div>
