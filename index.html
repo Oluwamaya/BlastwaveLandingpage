@@ -172,7 +172,7 @@
             "name": "Is Blastwave free to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Blastwave offers a free trial with 100 emails and 20 SMS included — no credit card required. Paid plans start from as little as a few dollars per 60 days."
+              "text": "Yes. Blastwave offers a free trial with 100 emails and 20 SMS included — no credit card required. Paid plans start from as little as a few dollars per 30 days."
             }
           },
           {
@@ -946,7 +946,7 @@
     <div class="fade-in" style="text-align:center; margin-bottom: 3rem;">
       <span class="section-pill">Pricing</span>
       <h2 class="section-title">Start Free. Scale as You Grow.</h2>
-      <p class="section-sub" style="margin: 0 auto;">Plans valid for 60 days or until quota runs out — whichever comes first. Upgrade anytime and your remaining quota rolls over.</p>
+      <p class="section-sub" style="margin: 0 auto;">Plans valid for 30 days or until quota runs out — whichever comes first. Upgrade anytime and your remaining quota rolls over.</p>
     </div>
     <div id="pricing-container">
       <div class="price-loading"><div class="price-spinner"></div><p>Loading plans...</p></div>
@@ -1118,7 +1118,7 @@ async function loadPricing() {
             <div>
               <span class="price-sym">$</span>
               <span class="price-val">${plan.price}</span>
-              <span class="price-per">${plan.price > 0 ? '/60 days' : 'free trial'}</span>
+              <span class="price-per">${plan.price > 0 ? '/30 days' : 'free trial'}</span>
             </div>
             ${plan.price > 0 && rate ? `
               <div style="width: 100%; font-size: 0.85rem; color: var(--green); margin-top: 0.5rem; font-weight: 600; text-align: left;">
