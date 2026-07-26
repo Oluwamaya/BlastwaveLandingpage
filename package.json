@@ -4,6 +4,11 @@
   "description": "Blastwave Landing Page",
   "scripts": {
     "serve": "npx serve . -p 3000",
-    "dev": "npx live-server --port=3000"
+    "dev": "npx live-server --port=3000",
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/styles.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
   }
 }

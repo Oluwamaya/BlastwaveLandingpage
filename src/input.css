@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ═══════════════════════════════════════════════════════════════════
+   FONTS — self-hosted IBM Plex, same files used by app.blastwave.africa
+   ═══════════════════════════════════════════════════════════════════ */
+@font-face { font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/sans-400.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('../assets/fonts/sans-500.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('../assets/fonts/sans-600.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/sans-700.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/mono-400.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url('../assets/fonts/mono-500.woff2') format('woff2'); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   DESIGN TOKENS — identical to app.blastwave.africa's system
+   ═══════════════════════════════════════════════════════════════════ */
+@theme {
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --color-ink: #0A0D12;
+  --color-paper: #FFFFFF;
+  --color-cloud: #F4F5F7;
+  --color-slate: #5B6572;
+
+  --color-ok: #1B8A5A;
+  --color-ok-bg: #E8F3ED;
+  --color-warn: #B7791B;
+  --color-warn-bg: #FBF1E1;
+  --color-bad: #C0392B;
+  --color-bad-bg: #FBEAE8;
+
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F4F5F7;
+  --color-surface-3: #ECEEF1;
+  --color-text: #0A0D12;
+  --color-text-soft: #5B6572;
+  --color-border: #E3E6EA;
+  --color-border-soft: #EDEFF2;
+  --color-inverse-surface: #0A0D12;
+  --color-inverse-text: #FFFFFF;
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 16px;
+}
+
+.dark {
+  --color-surface: #0A0D12;
+  --color-surface-2: #11151B;
+  --color-surface-3: #171C24;
+  --color-text: #EDEFF2;
+  --color-text-soft: #9AA3B0;
+  --color-border: #252B34;
+  --color-border-soft: #1C222B;
+  --color-inverse-surface: #FFFFFF;
+  --color-inverse-text: #0A0D12;
+  --color-ok: #3FBE86;
+  --color-ok-bg: #12261C;
+  --color-warn: #E0A542;
+  --color-warn-bg: #2A2013;
+  --color-bad: #E5695C;
+  --color-bad-bg: #2B1917;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .2s ease, color .2s ease;
+  }
+  :focus-visible { outline: 2px solid var(--color-ok); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+}
+
+@layer components {
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    border-radius: var(--radius-s); font-weight: 500; font-size: .9rem;
+    padding: 11px 22px; transition: opacity .15s ease, transform .1s ease;
+  }
+  .btn-primary { background-color: var(--color-inverse-surface); color: var(--color-inverse-text); }
+  .btn-primary:hover { opacity: .86; }
+  .btn-secondary { background: transparent; border: 1px solid var(--color-border); color: var(--color-text); }
+  .btn-secondary:hover { background-color: var(--color-surface-2); }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+}
